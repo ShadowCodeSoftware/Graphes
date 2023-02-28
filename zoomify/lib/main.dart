@@ -13,8 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primarySwatch: Colors.blue, visualDensity: VisualDensity.standard),
+      theme: ThemeData(visualDensity: VisualDensity.standard),
       home: Home(title: title),
     );
   }

@@ -10,22 +10,37 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
-  
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(widget.title),
+        elevation: 20.0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () {},
+          ),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          child: Text(
+            widget.title,
+          ),
         ),
       ),
     );
