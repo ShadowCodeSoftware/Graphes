@@ -1,11 +1,28 @@
-global.__basedir = __dirname;
-const port = 3000
 const express = require('express')
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const cors = require('cors')
+
+const userRoutes = require('./routes/users.routes')
+const playlistRoutes = require('./routes/playlists.routes')
+
 const app = express()
-require('./databases/neo4j')
+const port = 4000
+
+// Middleware
+app
+    .use(cors())
+    .use(morgan('dev'))
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({ extended: true }))
+
+// Routes
+app
+    .use('/api/auth', userRoutes)
+    .use('/api/playlist', playlistRoutes)
 
 
 // Server
-app.listen(process.env.port, () => {
-    console.log(`My backend started on the port http://127.0.0.1:${port}`)
+app.listen(port, () => {
+    console.log(`My backend started on the port http://localhost:${port}`)
 })
